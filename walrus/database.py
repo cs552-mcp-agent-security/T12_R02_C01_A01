@@ -440,6 +440,15 @@ class Database(Redis):
             pass
 
 
+
+    def flush_all_caches(self):
+        """Clear all cached values from this database.
+
+        Useful in local development when wrapped function bodies have
+        changed but the cache still holds old return values.
+        """
+        self.flushdb()
+
 class _Atomic(object):
     def __init__(self, db):
         self.db = db
